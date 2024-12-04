@@ -1,0 +1,102 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: aquamarine;
+    user-select: none;
+}
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    background:linear-gradient(325deg,#030003 0%
+,#7303c0 30%, #ec38bc 70%,white 100%);
+padding: 40px 60px
+;
+}
+
+h2{
+    color: white;
+    text-transform: uppercase;
+    font-size: 3em;
+    letter-spacing: 0.1em;
+}
+
+.reset{
+    padding: 15px 20px;
+    width: 100%;
+    background-color: #ffff;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    border: none;
+    letter-spacing: 0.1em;
+    font-weight: 600px;
+    cursor: pointer;
+    
+}
+.reset:focus{
+        color: #ec38bc;
+        background-color: #030003;
+    }
+.reset:hover{
+    box-shadow:inset 7px 5px 20px black;
+
+    }
+.game{
+        height: 430px;
+        width: 430px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        transform-style: preserve-3d;
+        perspective: 500px;
+        background-color:transparent;
+    }
+.item{
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        background-color: white;
+        font-size: 3em;
+        transform:rotateY(180deg) ;
+        transition: 0.25s;
+    }
+.item::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #404040;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+.item.boxOpen{
+    transform: rotateY(0deg);
+    
+}
+.boxOpen::after{
+    transform: rotateY(180deg);
+}
+.boxMatch::after{
+    transform: rotateY(180deg);
+}
+.boxMatch{
+    animation:blink 7s;
+}
+.wrong{
+    animation:blinkWrong 1s infinite;
+}
+@keyframes blink{
+    0%{ 
+        background: rgb(0, 255, 162);
+    }100%{
+       background-color: white;
+    }
+}
